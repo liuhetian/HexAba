@@ -42,6 +42,7 @@ function App() {
     const handleEncode = () => {
         const result = encode(encodeInput);
         setEncodedValue(result);
+        setDecodedValue('');
     };
 
     const decode = (a) => {
@@ -61,6 +62,7 @@ function App() {
     const handleDecode = () => {
         const result = decode(decodeInput);
         setDecodedValue(result);
+        setEncodedValue('');
     };
 
     const copyToClipboard = (text) => {
@@ -81,8 +83,17 @@ function App() {
         }
     };
 
+    const speakText = (text) => {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('抱歉，您的浏览器不支持语音合成功能。');
+        }
+    };
+
     return (
-        <div className="container">
+        <div className="container" data-tab={activeTab}>
             <div className="title-container">
                 <h1>阿巴语翻译器</h1>
                 <p className="subtitle">HexAbayu Translator</p>
@@ -119,6 +130,7 @@ function App() {
                             <button className="copy-button" onClick={() => copyToClipboard(encodedValue)}>
                                 复制编码结果
                             </button>
+                            <button className="speak-button" onClick={() => speakText(encodedValue)}>朗读编码结果</button>
                         </>
                     )}
                 </div>
@@ -141,6 +153,7 @@ function App() {
                             <button className="copy-button" onClick={() => copyToClipboard(decodedValue)}>
                                 复制解码结果
                             </button>
+                            <button className="speak-button" onClick={() => speakText(decodedValue)}>朗读解码结果</button>
                         </>
                     )}
                 </div>

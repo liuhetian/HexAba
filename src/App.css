@@ -255,4 +255,33 @@ p {
         margin-right: 0;
         margin-bottom: 8px;
     }
+}
+
+/* 复制和朗读按钮的样式 */
+.copy-button,
+.speak-button {
+    margin-top: 10px; /* 增加顶部间距 */
+    margin-right: 10px; /* 增加右侧间距 */
+}
+
+/* 朗读按钮的基础样式 */
+.speak-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    color: white !important;
+    background-color: #007bff !important; /* 默认蓝色 */
+}
+
+/* 当在解码模式时的朗读按钮样式 */
+[data-tab="decode"] .speak-button {
+    background-color: #ff8c00 !important; /* 橙色 */
+}
+
+/* 悬停效果 */
+.speak-button:hover {
+    background-color: #0056b3 !important;
+}
+
+[data-tab="decode"] .speak-button:hover {
+    background-color: #cc7000 !important;
 } 
