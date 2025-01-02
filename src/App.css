@@ -208,8 +208,17 @@ p {
 }
 
 .input-group input {
-    flex: 1; /* 使输入框占据剩余空间 */
-    margin-right: 10px; /* 输入框和按钮之间的间距 */
+    flex: 1;
+    margin-right: 10px;
+}
+
+.copy-button,
+.speak-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 /* 大屏幕设备 */
@@ -250,7 +259,8 @@ p {
 
     .input-group input,
     .input-group button,
-    .copy-button {
+    .copy-button,
+    .speak-button {
         width: 100%;
         margin-right: 0;
         margin-bottom: 8px;

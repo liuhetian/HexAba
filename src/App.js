@@ -127,10 +127,10 @@ function App() {
                     {encodedValue && (
                         <>
                             <p>编码后的内容: {encodedValue}</p>
+                            <button className="speak-button" onClick={() => speakText(encodedValue)}>朗读编码结果</button>
                             <button className="copy-button" onClick={() => copyToClipboard(encodedValue)}>
                                 复制编码结果
                             </button>
-                            <button className="speak-button" onClick={() => speakText(encodedValue)}>朗读编码结果</button>
                         </>
                     )}
                 </div>
@@ -150,10 +150,10 @@ function App() {
                     {decodedValue && (
                         <>
                             <p>解码后的内容: {decodedValue}</p>
+                            <button className="speak-button" onClick={() => speakText(decodedValue)}>朗读解码结果</button>
                             <button className="copy-button" onClick={() => copyToClipboard(decodedValue)}>
                                 复制解码结果
                             </button>
-                            <button className="speak-button" onClick={() => speakText(decodedValue)}>朗读解码结果</button>
                         </>
                     )}
                 </div>
