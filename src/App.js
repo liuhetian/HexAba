@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -7,6 +7,16 @@ function App() {
     const [encodedValue, setEncodedValue] = useState('');
     const [decodedValue, setDecodedValue] = useState('');
     const [activeTab, setActiveTab] = useState('encode');
+
+    useEffect(() => {
+        // 初始化编码和解码次数
+        if (!localStorage.getItem('encodeCount')) {
+            localStorage.setItem('encodeCount', 0);
+        }
+        if (!localStorage.getItem('decodeCount')) {
+            localStorage.setItem('decodeCount', 0);
+        }
+    }, []);
 
     const handleChange = (event) => {
         if (activeTab === 'encode') {
@@ -43,6 +53,11 @@ function App() {
         const result = encode(encodeInput);
         setEncodedValue(result);
         setDecodedValue('');
+
+        // 增加编码次数
+        const encodeCount = parseInt(localStorage.getItem('encodeCount')) + 1;
+        localStorage.setItem('encodeCount', encodeCount);
+        console.log(`编码次数: ${encodeCount}`);
     };
 
     const decode = (a) => {
@@ -63,6 +78,11 @@ function App() {
         const result = decode(decodeInput);
         setDecodedValue(result);
         setEncodedValue('');
+
+        // 增加解码次数
+        const decodeCount = parseInt(localStorage.getItem('decodeCount')) + 1;
+        localStorage.setItem('decodeCount', decodeCount);
+        console.log(`解码次数: ${decodeCount}`);
     };
 
     const copyToClipboard = (text) => {
